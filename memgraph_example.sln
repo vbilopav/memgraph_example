@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "memgraph_example", "memgraph_example\memgraph_example.csproj", "{FED12F20-2DE0-4B1F-9C20-E9513609F2F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "memgraph_example", "memgraph_example\memgraph_example.csproj", "{FED12F20-2DE0-4B1F-9C20-E9513609F2F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{B26F5735-3A3F-4FF2-9E1B-D4F1AA47B37C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FED12F20-2DE0-4B1F-9C20-E9513609F2F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FED12F20-2DE0-4B1F-9C20-E9513609F2F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FED12F20-2DE0-4B1F-9C20-E9513609F2F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B26F5735-3A3F-4FF2-9E1B-D4F1AA47B37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B26F5735-3A3F-4FF2-9E1B-D4F1AA47B37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B26F5735-3A3F-4FF2-9E1B-D4F1AA47B37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B26F5735-3A3F-4FF2-9E1B-D4F1AA47B37C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
