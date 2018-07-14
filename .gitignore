@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 *.gz
+
+memgraph_example/wwwroot/libs/

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,36 +16,52 @@ namespace memgraph_example
     {
         private readonly ISession session;
         private readonly ILogger<MemGraphController> log;
+        private readonly Stopwatch stopwatch;
 
         public MemGraphController(ISession session, ILogger<MemGraphController> log)
         {
             this.session = session;
             this.log = log;
+            this.stopwatch = new Stopwatch();
         }
 
         [HttpPost]
         public async Task<IActionResult> Post()
         {
             string command;
-            IStatementResult result;
+            var result = new List<IRecord>();
 
             using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                 command = await reader.ReadToEndAsync();
-
+;
             log.LogInformation($">>> Execute: {command}");
+
+            stopwatch.Restart();
             try
             {
-                result = session.Run(command);
+                var cursor = await session.RunAsync(command);
+                while (await cursor.FetchAsync())
+                {
+                    result.Add(cursor.Current);
+                }
+                stopwatch.Stop();
             }
             catch (ClientException e)
             {
-                log.LogError(e, e.Message);
-                return BadRequest(new {message = e.Message});
+                var msg = "Error while exectiong query.";
+                log.LogError(e, msg);
+                return BadRequest(new
+                {
+                    message = msg,
+                    details = e.Message,
+                    elapsed = stopwatch.Elapsed
+                });
             }
 
             return Ok(new
             {
-                data = result.GetEnumerator()
+                data = result,
+                elapsed = stopwatch.Elapsed
             });
         }
     }
