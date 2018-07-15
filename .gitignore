@@ -262,3 +262,4 @@ __pycache__/
 *.gz
 
 memgraph_example/wwwroot/libs/
+memgraph_example/wwwroot/app/graph-example.js

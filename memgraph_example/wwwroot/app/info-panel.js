@@ -1,37 +1,41 @@
 define([], () => class {
 
     constructor(element) {
-        this.run = element.find("#run");
-        this.stop = element.find("#stop");
-        this.msg = element.find("#msg");
-        this.stop.setAttribute("disabled", null);
+        this._run = element.find("#run");
+        this._stop = element.find("#stop");
+        this._msg = element.find("#msg");
+        this._stop.setAttribute("disabled", null);
         this.setMessage("Ready...");
     }
 
     setMessage(message) {
-        this.msg.removeClass("error").html(message);
+        this._msg.removeClass("error").html(message);
     }
 
     setError(message) {
-        this.msg.addClass("error").html(message);
+        this._msg.addClass("error").html(message);
     }
 
     enableRun(state=true) {
-        this.run.enable(state);
+        this._run.enable(state);
     }
 
     enableStop(state=true) {
-        this.stop.enable(state);
+        this._stop.enable(state);
     }
 
     runCallback(callback) {
-        this.run.on("click", () => {
+        this._run.on("click", () => {
             this.setMessage("Running...");
             this.enableRun(false);
             this.enableStop();
 
             callback(this);
         })
+    }
+
+    triggerRun() {
+        this._run.trigger("click");
     }
 
 });

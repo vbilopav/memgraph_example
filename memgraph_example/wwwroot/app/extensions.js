@@ -9,7 +9,9 @@ define([], () => {
             });
         };
 
-    test(HTMLElement, ["find", "show", "hide", "css", "_styles", "html", "enable", "on", "addClass", "removeClass"]);
+    test(HTMLElement, [
+        "find", "show", "hide", "css", "_styles", "html", "enable", "on", "trigger", "addClass", "removeClass"
+    ]);
 
     HTMLElement.prototype.find = function(search) {
         let e = this.querySelector(search);
@@ -85,6 +87,13 @@ define([], () => {
     HTMLElement.prototype.on = function(eventName, eventHandler) {
         for(let e of eventName.split(" ")) {
             this.addEventListener(e, eventHandler);
+        }
+        return this;
+    }
+
+    HTMLElement.prototype.trigger = function(eventName) {
+        for(let e of eventName.split(" ")) {
+            this.dispatchEvent(new Event(e));
         }
         return this;
     }

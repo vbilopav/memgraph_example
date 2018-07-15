@@ -2,17 +2,21 @@ define([
     "editor",
     "info-panel",
     "memgraph-service",
+    "graph"
 ], (
     Editor,
     InfoPanel,
-    service
+    service,
+    Graph
 ) => {
    
     const 
         app = document.body.find("#app"),
         editor = new Editor(app.find("#editor")),
-        panel = new InfoPanel(app.find("#panel")),
-        chart = app.find("#chart");
+        panel = new InfoPanel(app.find("#panel"));
+    
+    let 
+        graph;
 
     return () => {
         editor.focus();
@@ -26,6 +30,7 @@ define([
                 if (response.ok) {
                     panel.setMessage(
                         `Successfully run. Total query runtime: ${response.elapsed}. ${response.data.length} rows affected.`);
+                    graph.draw(response.data);
                 } else {
                     panel.setError(`ERROR: ${response.details}`)
                 }
@@ -34,5 +39,10 @@ define([
 
         document.body.find("#loading-screen").remove();
         app.show();
+
+        // init component after it becomes visible so we can calc dimensions
+        graph = new Graph(app.find("#chart"));
+        // trigger run immidiatley
+        panel.triggerRun();
     };
 });

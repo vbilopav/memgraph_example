@@ -33,7 +33,7 @@ namespace memgraph_example
 
             using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                 command = await reader.ReadToEndAsync();
-;
+
             log.LogInformation($">>> Execute: {command}");
 
             stopwatch.Restart();
@@ -46,7 +46,7 @@ namespace memgraph_example
                 }
                 stopwatch.Stop();
             }
-            catch (ClientException e)
+            catch (Neo4jException e)
             {
                 var msg = "Error while exectiong query.";
                 log.LogError(e, msg);
