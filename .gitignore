@@ -263,3 +263,5 @@ __pycache__/
 
 memgraph_example/wwwroot/libs/
 memgraph_example/wwwroot/app/graph-example.js
+memgraph_example/wwwroot/app/graph-example.1.js
+memgraph_example/wwwroot/app/graph-example.2.js

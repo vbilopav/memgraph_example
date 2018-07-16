@@ -42,6 +42,7 @@ define([
 
         // init component after it becomes visible so we can calc dimensions
         graph = new Graph(app.find("#chart"));
+
         // trigger run immidiatley
         panel.triggerRun();
     };
