@@ -97,3 +97,16 @@ button[disabled]{
   stroke-width: 3.5px;
   cursor: grab;
 }
+.memgraphTitle {
+  font: 14px sans-serif;
+  stroke: #1d1d1d;;
+}
+.memgraphLabel {
+  font: 10px sans-serif;
+  stroke: #464646;;
+}
+.memgraphLink {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 3.5px;
+}

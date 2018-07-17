@@ -3,6 +3,8 @@ define([
     "info-panel",
     "memgraph-service",
     "graph"
+    //"graph-example.1"
+    //"graph-example.2"
 ], (
     Editor,
     InfoPanel,
@@ -42,7 +44,7 @@ define([
 
         // init component after it becomes visible so we can calc dimensions
         graph = new Graph(app.find("#chart"));
-
+        //Graph(app.find("#chart"))
         // trigger run immidiatley
         panel.triggerRun();
     };
